@@ -139,8 +139,8 @@ void run_float_test(int n, int threads[], int repeats) {
     init_matrix_float(B, n);
     
     printf("\nТЕСТ FLOAT\n");
-    printf("Потоки |  Наш код   | BLAS время | Производит | Ср.геом\n");
-    printf("----------------------------------------------------\n");
+    printf("Потоки |  Наш код   | BLAS время | Производит | Ср.геом  | BLAS быстрее в\n");
+    printf("--------------------------------------------------------------------------\n");
     
     for (int t = 0; t < 5; t++) {
         int th = threads[t];
@@ -175,9 +175,11 @@ void run_float_test(int n, int threads[], int repeats) {
             gsum += log(blas_t[r] / my_t[r]);
         }
         double gmean = exp(gsum / repeats) * 100;
+
+        double crat_speed = my_avg / blas_avg;
         
-        printf("%3d    |  %.4f    |  %.4f    |   %.1f%%     | %.1f%%\n", 
-               th, my_avg, blas_avg, perf, gmean);
+        printf("%3d    |  %.4f    |  %.4f    |   %.1f%%     | %.1f%%     | %.2f\n", 
+               th, my_avg, blas_avg, perf, gmean, crat_speed);
     }
     
     free(A);
@@ -196,8 +198,8 @@ void run_double_test(int n, int threads[], int repeats) {
     init_matrix_double(B, n);
     
     printf("\nТЕСТ DOUBLE\n");
-    printf("Потоки |  Наш код   | BLAS время | Производит | Ср.геом\n");
-    printf("----------------------------------------------------\n");
+    printf("Потоки |  Наш код   | BLAS время | Производит | Ср.геом | BLAS быстрее в\n");
+    printf("--------------------------------------------------------------------------\n");
     
     for (int t = 0; t < 5; t++) {
         int th = threads[t];
@@ -232,9 +234,11 @@ void run_double_test(int n, int threads[], int repeats) {
             gsum += log(blas_t[r] / my_t[r]);
         }
         double gmean = exp(gsum / repeats) * 100;
+
+        double crat_speed = my_avg / blas_avg;
         
-        printf("%3d    |  %.4f    |  %.4f    |   %.1f%%     | %.1f%%\n", 
-               th, my_avg, blas_avg, perf, gmean);
+        printf("%3d    |  %.4f    |  %.4f    |   %.1f%%     | %.1f%%     | %.2f\n", 
+               th, my_avg, blas_avg, perf, gmean, crat_speed);
     }
     
     free(A);
