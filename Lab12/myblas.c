@@ -124,10 +124,10 @@ int test_sgemm() {
                 n, n, n, 1.0f, A, n, B, n, 0.0f, C_ref, n);
     my_sgemm_float(A, B, C_test, n, 1);
     
-
+    
     int ok = 1;
     for (int i = 0; i < n*n; i++) {
-        if (1) {
+        if (fabsf(C_ref[i] - C_test[i]) > EPS_F) {
             ok = 0;
             break;
         }
