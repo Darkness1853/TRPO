@@ -119,10 +119,11 @@ int test_sgemm() {
         A[i] = (float)rand() / RAND_MAX;
         B[i] = (float)rand() / RAND_MAX;
     }
-    
+
     cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans,
                 n, n, n, 1.0f, A, n, B, n, 0.0f, C_ref, n);
     my_sgemm_float(A, B, C_test, n, 1);
+    
     
     int ok = 1;
     for (int i = 0; i < n*n; i++) {
