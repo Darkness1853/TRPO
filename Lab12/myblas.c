@@ -114,7 +114,7 @@ int test_sgemm() {
     float *B = malloc(n*n*sizeof(float));
     float *C_ref = calloc(n*n, sizeof(float));
     float *C_test = calloc(n*n, sizeof(float));
-    
+     
     for (int i = 0; i < n*n; i++) {
         A[i] = (float)rand() / RAND_MAX;
         B[i] = (float)rand() / RAND_MAX;
