@@ -2,7 +2,7 @@ name: CI BLAS
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "branch1" ]
 
 jobs:
   build-and-test:
